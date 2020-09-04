@@ -18,9 +18,8 @@
 
 Here's an example how the data looks (*each class takes three-rows*):
 
-![](doc/img/fashion-mnist-sprite.png)
+![](https://s3-eu-central-1.amazonaws.com/zalando-wp-zalando-research-production/2017/08/fashion-mnist-sprite.png)
 
-<img src="doc/img/embedding.gif" width="100%">
 
 ## Why we made Fashion-MNIST
 
