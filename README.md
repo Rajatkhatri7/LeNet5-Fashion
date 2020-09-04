@@ -5,12 +5,7 @@
 * [Why we made Fashion-MNIST](#why-we-made-fashion-mnist)
 * [Get the Data](#get-the-data)
 * [Usage](#usage)
-* [Benchmark](#benchmark)
-* [Visualization](#visualization)
-* [Contributing](#contributing)
-* [Contact](#contact)
-* [Citing Fashion-MNIST](#citing-fashion-mnist)
-* [License](#license)
+* 
 </p></details><p></p>
 
 
@@ -83,3 +78,12 @@ data = input_data.read_data_sets('data/fashion', source_url='http://fashion-mnis
 ```
 
 Also, an official Tensorflow tutorial of using `tf.keras`, a high-level API to train Fashion-MNIST [can be found here](https://www.tensorflow.org/tutorials/keras/basic_classification).
+
+## Architecture
+I decided to start with a slightly modified [LeNet-5](http://yann.lecun.com/exdb/lenet/) architecture. It is a very simple and well known convolutional neural network architecture that is easy to implement and usually gives good results out of the box to start with. 
+![image](https://miro.medium.com/max/1200/1*y68ztClLF6ae7P53ayyFzQ.png)
+
+## Conclusions
+It was relativelly easy to train a model that at least could learn the train dataset well (avoidable bias reduction). The resulting model was clearly overfitting the train dataset and not generalizing well enough. However, reducing the overfitting was a much more challenging problem. Dropout regularization and data augmentation helped a bit, but probably LeNet-5 was not the ideal architecture for this concrete dataset. Some of the dataset classes were very similar to each other (e.g. ankle boots and sneakers, dresses and coats), so a slightly more sophisticated and deeper model like [AlexNet](http://vision.stanford.edu/teaching/cs231b_spring1415/slides/alexnet_tugce_kyunghee.pdf) would probably perform better.
+
+Training the model on a Macbook with no GPU acceleration was far from ideal too, and in the future I will definitely invest some time to setup an easy way to run these experiments on AWS spot instances or in Google Cloud. Either way, if you are using a Macbook and still want to run these experiments or similar ones, I definitely recommend that you compile Tensorflow from source, as it will enable some CPU optimizations that are not enabled in the binary package and which makes a big difference.
